@@ -20,4 +20,4 @@
     echo "education:" . "<br>" . htmlspecialchars($cv['education']) . "<br>";
     echo "Links:" . "<br>" . htmlspecialchars($cv['URLlinks']) . "<br>";
 
-    ?>
+?>
