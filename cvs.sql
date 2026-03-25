@@ -56,6 +56,36 @@ ALTER TABLE `cvs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
+
+INSERT INTO `cvs` (`name`, `email`, `password`, `keyprogramming`, `profile`, `education`, `URLlinks`) VALUES
+(
+  'Alice Smith',
+  'alice@example.com',
+  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+  'Python',
+  'Passionate Python developer with 3 years of experience building web apps and data pipelines.',
+  'BSc Computer Science, Aston University, 2021',
+  'https://github.com/alicesmith, https://linkedin.com/in/alicesmith'
+),
+(
+  'Bob Jones',
+  'bob@example.com',
+  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+  'JavaScript',
+  'Full-stack JavaScript developer specialising in React and Node.js.',
+  'MSc Software Engineering, Aston University, 2022',
+  'https://github.com/bobjones'
+),
+(
+  'Carol White',
+  'carol@example.com',
+  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+  'Java',
+  'Backend Java developer experienced in Spring Boot and microservices.',
+  'BEng Software Engineering, Aston University, 2020',
+  'https://linkedin.com/in/carolwhite, https://github.com/carolwhite'
+);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
