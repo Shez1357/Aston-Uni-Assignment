@@ -21,8 +21,7 @@
     </nav>
 
     <?php
-        // Fetch and display CV names
-    $stmt_names = $pdo->query("SELECT name, email, keyprogramming FROM cvs");
+    $stmt_names = $pdo->query("SELECT id ,name, email, keyprogramming FROM cvs");
     $cvs = $stmt_names->fetchAll(PDO::FETCH_ASSOC);
     if ($cvs) {
 
@@ -30,9 +29,14 @@
         echo "<tr><th>Name</th><th>Email</th><th>Key Programming Languages</th></tr>";
         foreach ($cvs as $cv) {
             echo "<tr>"
-               . "<td>" . htmlspecialchars($cv['name']) . "</td>"
+
+               . "<td>" . "<a href='view_cv.php?id=" . $cv['id'] . "'>" 
+               . htmlspecialchars($cv['name']) . "</a>" . "</td>"
+
                . "<td>" . htmlspecialchars($cv['email']) . "</td>"
+
                . "<td>" . htmlspecialchars($cv['keyprogramming']) . "</td>"
+
                . "</tr>";
         }
         echo "</table>";
