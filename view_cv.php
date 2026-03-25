@@ -19,3 +19,5 @@
     echo "profile:" . "<br>" . htmlspecialchars($cv['profile']) . "<br>";
     echo "education:" . "<br>" . htmlspecialchars($cv['education']) . "<br>";
     echo "Links:" . "<br>" . htmlspecialchars($cv['URLlinks']) . "<br>";
+
+    ?>
