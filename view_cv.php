@@ -22,11 +22,7 @@
 }
 </style>
     <h1>CV Details</h1>
-    <nav>
-        <a href="index.php">Home</a>
-        <a href="login.php">Login</a>
-        <a href="register.php">Register</a>
-    </nav>
+    <?php include 'includes/nav.php'; ?>
     <form method="GET" action="search.php">
         <input type="text" name="q" placeholder="Search by name or language..." value="<?php echo htmlspecialchars($searchTerm); ?>">
         <button type="submit">Search</button>
