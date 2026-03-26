@@ -1,31 +1,38 @@
 <?php
 //Just in case if client side validation was bypassed somehow. Black magic if they do bypass client side 
 if (empty($_POST['name'])) {
-    die("Username is required.");
+    echo "Username is required.<br><a href='register.php'>Go back to registration</a>";
+    exit;
 }
 
 if (empty($_POST['email'])) {
-    die("Email is required.");
+    echo "Email is required.<br><a href='register.php'>Go back to registration</a>";
+    exit;
 }
 
 if (empty($_POST['password'])) {
-    die("Password is required.");
+    echo "Password is required.<br><a href='register.php'>Go back to registration</a>";
+    exit;
 }
 
 if (empty($_POST['confirm_password'])) {
-    die("Please confirm your password.");
+    echo "Please confirm your password.<br><a href='register.php'>Go back to registration</a>";
+    exit;
 }
 
 if (strlen($_POST['password']) < 8) {
-    die("Password must be at least 8 characters long.");
+    echo "Password must be at least 8 characters long.<br><a href='register.php'>Go back to registration</a>";
+    exit;
 }
 
 if (! preg_match("/[A-Z]/", $_POST['password'])) {
-    die("Password must contain at least one uppercase letter.");
+    echo "Password must contain at least one uppercase letter.<br><a href='register.php'>Go back to registration</a>";
+    exit;
 }
 
 if ($_POST['password'] !== $_POST['confirm_password']) {
-    die("Passwords do not match.");
+    echo "Passwords do not match.<br><a href='register.php'>Go back to registration</a>";
+    exit;
 }
 
 $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -49,8 +56,10 @@ try {
 } catch (PDOException $e) {
     // Handle duplicate email or other DB error nicely
     if ($e->errorInfo[1] === 1062) {
-        die("Email already exists.");
+        echo "Email already exists.<br><a href='register.php'>Go back to registration</a>";
+    } else {
+        echo "Database error: " . $e->getMessage() . "<br><a href='register.php'>Go back to registration</a>";
     }
-    die("Database error: " . $e->getMessage());
+    exit;
 }
 ?>
