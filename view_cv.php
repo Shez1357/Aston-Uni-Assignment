@@ -13,11 +13,14 @@
     if (!$cv) {
         die("CV not found.");
     }
-    echo "name: " . htmlspecialchars($cv['name']) . "<br>";
-    echo "email: " . htmlspecialchars($cv['email']) . "<br>";
-    echo "key programming languages: " . htmlspecialchars($cv['keyprogramming']) . "<br>";
-    echo "profile:" . "<br>" . htmlspecialchars($cv['profile']) . "<br>";
-    echo "education:" . "<br>" . htmlspecialchars($cv['education']) . "<br>";
-    echo "Links:" . "<br>" . htmlspecialchars($cv['URLlinks']) . "<br>";
+    echo "<table border='1'>";
+    echo "<tr><th>Topic</th><th>Data</th></tr>";
+    echo "<tr><td>Name</td><td>" . htmlspecialchars($cv['name']) . "</td></tr>";
+    echo "<tr><td>Email</td><td>" . htmlspecialchars($cv['email']) . "</td></tr>";
+    echo "<tr><td>Key Programming Languages</td><td>" . htmlspecialchars($cv['keyprogramming']) . "</td></tr>";
+    echo "<tr><td>Profile</td><td>" . nl2br(htmlspecialchars($cv['profile'])) . "</td></tr>";
+    echo "<tr><td>Education</td><td>" . nl2br(htmlspecialchars($cv['education'])) . "</td></tr>";
+    echo "<tr><td>Links</td><td>" . nl2br(htmlspecialchars($cv['URLlinks'])) . "</td></tr>";
+    echo "</table>";
 
 ?>

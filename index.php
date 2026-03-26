@@ -19,7 +19,10 @@
     <nav>
         <a href="index.php">Home</a>
     </nav>
-
+    <form method="GET" action="search.php">
+    <input type="text" name="q" placeholder="Search by name or language...">
+    <button type="submit">Search</button>
+    </form>
     <?php
     $stmt_names = $pdo->query("SELECT id ,name, email, keyprogramming FROM cvs");
     $cvs = $stmt_names->fetchAll(PDO::FETCH_ASSOC);
