@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-    <?php
-    session_start();
-    require 'config/db.php';
-    echo "Connected successfully!";
-    $stmt = $pdo->query("SELECT COUNT(*) FROM cvs");
-    echo " Found " . $stmt->fetchColumn() . " CVs.";
-    
-    ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,6 +16,24 @@
     }
 }
 </style>
+<?php
+    session_start();
+    require 'config/db.php';
+    echo "Connected successfully!";
+    $stmt = $pdo->query("SELECT COUNT(*) FROM cvs");
+    echo " Found " . $stmt->fetchColumn() . " CVs.";
+    
+    if (!empty($_SESSION['logged_in'])): ?>
+        <p id="login-success" style="color: green;">Login successful!</p>
+        <script>
+            console.log('Timer script loaded');
+            setTimeout(function() {
+                console.log('Hiding message');
+                document.getElementById('login-success').style.display = 'none';
+            }, 5000);
+        </script>
+    <?php endif; ?>
+    
     <h1>Aston University CV Website</h1>
     <nav>
         <a href="index.php">Home</a>

@@ -26,7 +26,7 @@ if ($searchTerm !== '') {
     body {
     text-align: center;
     margin: 0 auto;
-    table {
+    table{
         margin: 0 auto;
     }
 }

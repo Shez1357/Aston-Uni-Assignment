@@ -1,15 +1,24 @@
 <?php
- if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $mysqli =  require __DIR__ . '/config/db.php';
-    $sql = sprintf("SELECT * FROM cvs  WHERE email = '%s'", $mysqli->real_escape_string($_POST['email']));
-    $result = $mysqli->query($sql);
+session_start();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $valid = false;
+    $pdo = require __DIR__ . '/config/db.php';
 
-    $result = $result->fetch_assoc();
+    $stmt = $pdo->prepare("SELECT * FROM cvs WHERE email = ?");
+    $stmt->execute([$_POST['email']]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    var_dump($result);
+    if ($user && password_verify($_POST['password'], $user['password'])) {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['logged_in'] = true;
+        header('Location: index.php');
+        exit;
+    } else {
+        $error = "Login failed. Check email/password.";
+    }
+
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +30,12 @@
 </head>
 <body>
     <h1>Login</h1>
-    <form action="process_login.php" method="POST">
+    <?php if (!empty($error)): ?>
+        <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
+    <?php endif; ?>  
+
+    
+    <form method="POST">
         <div>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br><br>
