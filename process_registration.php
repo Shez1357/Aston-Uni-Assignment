@@ -1,5 +1,5 @@
 <?php
-//Just in case if client side validation was bypassed somehow.
+//Just in case if client side validation was bypassed somehow. Black magic if they do bypass client side 
 if (empty($_POST['name'])) {
     die("Username is required.");
 }
@@ -39,8 +39,13 @@ try {
         ':email' => $_POST['email'],
         ':password' => $password_hash,
     ]);
+    
+    $user_id = $pdo->lastInsertId();
+    session_start();
+    $_SESSION['user_id'] = $user_id;
 
-    echo "Registration successful.";
+    header("Location: fill_cv.php");
+    exit;
 } catch (PDOException $e) {
     // Handle duplicate email or other DB error nicely
     if ($e->errorInfo[1] === 1062) {
