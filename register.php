@@ -10,8 +10,8 @@
     <h1>Sign Up</h1>
     <form action="process_registration.php" method="POST">
         <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
         </div>
 
         <div>

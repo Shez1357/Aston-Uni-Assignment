@@ -1,6 +1,6 @@
 <?php
 //Just in case if client side validation was bypassed somehow.
-if (empty($_POST['username'])) {
+if (empty($_POST['name'])) {
     die("Username is required.");
 }
 
@@ -29,6 +29,23 @@ if ($_POST['password'] !== $_POST['confirm_password']) {
 }
 
 $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-print_r($_POST);
-print_r($password_hash);
+$pdo = require __DIR__ . '/config/db.php';
+
+try {
+    $sql = "INSERT INTO cvs (name, email, password) VALUES (:name, :email, :password)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        ':name' => $_POST['name'],
+        ':email' => $_POST['email'],
+        ':password' => $password_hash,
+    ]);
+
+    echo "Registration successful.";
+} catch (PDOException $e) {
+    // Handle duplicate email or other DB error nicely
+    if ($e->errorInfo[1] === 1062) {
+        die("Email already exists.");
+    }
+    die("Database error: " . $e->getMessage());
+}
 ?>
