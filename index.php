@@ -15,6 +15,15 @@
     <title>Aston Uni CV website</title>
 </head>
 <body>
+<style>
+    body {
+    text-align: center;
+    margin: 0 auto;
+    table {
+        margin: 0 auto;
+    }
+}
+</style>
     <h1>Aston University CV Website</h1>
     <nav>
         <a href="index.php">Home</a>

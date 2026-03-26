@@ -22,6 +22,15 @@ if ($searchTerm !== '') {
     <link rel="stylesheet" href="public/style.css">
     <title><?php echo htmlspecialchars($pageTitle); ?></title>
 <body>
+    <style>
+    body {
+    text-align: center;
+    margin: 0 auto;
+    table {
+        margin: 0 auto;
+    }
+}
+</style>
     <h1>Search Results</h1>
     <nav>
         <a href="index.php">Home</a>

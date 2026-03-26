@@ -7,9 +7,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/style.css">
+    <link rel="stylesheet" href="public/style.css">
     <title>View CV - Aston Uni CV website</title>
 <body>
+    <style>
+    body {
+    text-align: center;
+    margin: 0 auto;
+    table {
+        margin: 0 auto;
+    }
+}
+</style>
     <h1>CV Details</h1>
     <nav>
         <a href="index.php">Home</a>
