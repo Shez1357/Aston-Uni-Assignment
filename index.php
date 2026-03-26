@@ -18,6 +18,8 @@
     <h1>Aston University CV Website</h1>
     <nav>
         <a href="index.php">Home</a>
+        <a href="login.php">Login</a>
+        <a href="register.php">Register</a>
     </nav>
     <form method="GET" action="search.php">
     <input type="text" name="q" placeholder="Search by name or language...">
