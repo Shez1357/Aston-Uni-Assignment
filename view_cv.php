@@ -1,6 +1,20 @@
 <?php
     session_start();
     require 'config/db.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<?php include 'includes/header.php'; ?>
+<body>
+    <h1>CV Details</h1>
+    <nav>
+        <a href="index.php">Home</a>
+    </nav>
+    <form method="GET" action="search.php">
+        <input type="text" name="q" placeholder="Search by name or language..." value="<?php echo htmlspecialchars($searchTerm); ?>">
+        <button type="submit">Search</button>
+    </form>
+    <?php
     $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
     if (!$id){
         die("Invalid CV ID.");
@@ -24,3 +38,5 @@
     echo "</table>";
 
 ?>
+</body>
+</html>
